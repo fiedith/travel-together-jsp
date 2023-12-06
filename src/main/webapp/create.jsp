@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    // Check if the user is not logged in (session does not exist)
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("hello.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -206,8 +213,17 @@
           <button class="S_button">검색</button>
         </div>	
         <div class="headerLayout_R">
-          <a href="login.jsp" class="button">로그인</a>
-          <a href="signup.jsp" class="button">회원가입</a>
+          <c:choose>
+            <c:when test="${empty sessionScope.user}">
+              <!-- User is not logged in -->
+              <a href="login.jsp" class="button">로그인</a>
+              <a href="signup.jsp" class="button">회원가입</a>
+            </c:when>
+            <c:otherwise>
+              <!-- User is logged in -->
+              <a href="LogoutServlet" class="button">로그아웃</a>
+            </c:otherwise>
+          </c:choose>
         </div>
       </div>
     </div>
