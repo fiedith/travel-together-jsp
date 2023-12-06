@@ -159,6 +159,7 @@ public class ArticleDao {
                 article.setTitle(rs.getString("title"));
                 article.setContent(rs.getString("content"));
                 article.setUserName(rs.getString("userName"));
+                article.setImageNumber(rs.getInt("image_number"));
 
                 articles.add(article);
             }
