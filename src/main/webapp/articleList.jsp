@@ -139,6 +139,22 @@
     background-size : cover;
     background-image: url("https://plus.unsplash.com/premium_photo-1700141570570-22c02f4b654f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   }
+  .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 <body>
     <div class="layout">
@@ -177,12 +193,22 @@
 
         <c:forEach var="article" items="${articleList}">
             <div class="article">
-                
+                <c:if test="${article.imageNumber eq 1}">
+                   <img src="images/1.jpg" alt="ocean">
+                </c:if>
+                <c:if test="${article.imageNumber eq 2}">
+                  <img src="images/2.jpg" alt="mountain">
+                </c:if>
+                <c:if test="${article.imageNumber eq 3}">
+                  <img src="images/3.jpg" alt="temple">
+                </c:if>
                 <h3>제목: <a href="ArticleServlet?articleId=${article.articleId}">${article.title}</a></h3>
                 <p>작성자: ${article.userName}</p>
-                <p>이미지번호: ${article.imageNumber}</p>
             </div>
         </c:forEach>
+    </div>
+    <div class="circle">
+      글쓰기
     </div>
 </body>
 </html>
