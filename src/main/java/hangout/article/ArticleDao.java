@@ -44,7 +44,7 @@ public class ArticleDao {
 
     public int createArticle(Article article, int loggedInUserId) {
         open();
-        String SQL = "INSERT INTO article (user_id, title, content, travel_start, travel_end, travel_region, travel_city, number_of_partners, image_number, created_at) " +
+        String SQL = "INSERT INTO article (user_id, title, content, travel_start, travel_end, travel_region, number_of_partners, image_number, created_at) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())";
         try {
             pstmt = conn.prepareStatement(SQL);

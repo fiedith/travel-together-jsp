@@ -252,17 +252,17 @@
   	</div>
   	    <div>
     	<div class="text">이미지</div>
-    	<input type="radio" name="image_number" id="image1" class="image-option">
+    	<input type="radio" name="image_number" id="image1" value="1" class="image-option">
     	<label for="image1">
       		<img src="https://placekitten.com/100/100" alt="이미지 1">
     	</label>
 
-    	<input type="radio" name="image_number" id="image2" class="image-option">
+    	<input type="radio" name="image_number" id="image2" value="2" class="image-option">
     	<label for="image2">
       		<img src="https://placekitten.com/101/101" alt="이미지 2">
     	</label>
 
-    	<input type="radio" name="image_number" id="image3" class="image-option">
+    	<input type="radio" name="image_number" id="image3" value="3" class="image-option">
     	<label for="image3">
       	<img src="https://placekitten.com/102/102" alt="이미지 3">
     	</label>
