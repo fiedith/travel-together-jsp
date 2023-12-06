@@ -1,7 +1,7 @@
 package hangout.article;
-
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +31,9 @@ public class CreateArticleServlet extends HttpServlet {
             String travelRegion = request.getParameter("travel_region");
             String travelCity = request.getParameter("travel_city");
             int numberOfPartners = Integer.parseInt(request.getParameter("number"));
-            int imageNumber = Integer.parseInt(request.getParameter("image_number"));
+            
+            // @TODO: 사진 번호
+//            int imageNumber = Integer.parseInt(request.getParameter("image_number"));
 
             // Create an Article object with the retrieved details
             Article newArticle = new Article();
@@ -43,7 +45,9 @@ public class CreateArticleServlet extends HttpServlet {
             newArticle.setTravelRegion(travelRegion);
             newArticle.setTravelCity(travelCity);
             newArticle.setNumberOfPartners(numberOfPartners);
-            newArticle.setImageNumber(imageNumber);
+            
+         // @TODO: 사진 번호
+//            newArticle.setImageNumber(imageNumber);
 
             // Save the article to the database
             ArticleDao articleDao = new ArticleDao();

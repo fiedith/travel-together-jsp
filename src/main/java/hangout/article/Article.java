@@ -1,5 +1,6 @@
 package hangout.article;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Article {
@@ -7,8 +8,8 @@ public class Article {
 	private int userId;
     private String title;
     private String content;
-    private LocalDateTime travelStart;
-    private LocalDateTime travelEnd;
+    private LocalDate travelStart;
+    private LocalDate travelEnd;
     private String travelRegion;
     private String travelCity;
     private int numberOfPartners;
@@ -40,16 +41,16 @@ public class Article {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public LocalDateTime getTravelStart() {
+	public LocalDate getTravelStart() {
 		return travelStart;
 	}
-	public void setTravelStart(LocalDateTime travelStart) {
+	public void setTravelStart(LocalDate travelStart) {
 		this.travelStart = travelStart;
 	}
-	public LocalDateTime getTravelEnd() {
+	public LocalDate getTravelEnd() {
 		return travelEnd;
 	}
-	public void setTravelEnd(LocalDateTime travelEnd) {
+	public void setTravelEnd(LocalDate travelEnd) {
 		this.travelEnd = travelEnd;
 	}
 	public String getTravelRegion() {

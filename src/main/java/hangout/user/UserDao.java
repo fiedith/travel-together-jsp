@@ -94,6 +94,7 @@ public class UserDao {
             rs=pstmt.executeQuery();    //select
             if(rs.next()) { //결과가 있다면
                 User user = new User();
+                user.setId(rs.getInt("id"));
                 user.setUserId(rs.getString("userId"));
                 user.setUserPassword(rs.getString("userPassword"));
                 user.setUserName(rs.getString("userName"));

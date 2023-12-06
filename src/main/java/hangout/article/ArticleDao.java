@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ArticleDao {
 
     public int createArticle(Article article, int loggedInUserId) {
         open();
-        String SQL = "INSERT INTO board (user_id, title, content, travel_start, travel_end, travel_region, travel_city, number_of_partners, image_number, created_at) " +
+        String SQL = "INSERT INTO article (user_id, title, content, travel_start, travel_end, travel_region, travel_city, number_of_partners, image_number, created_at) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
         try {
             pstmt = conn.prepareStatement(SQL);
@@ -73,7 +74,7 @@ public class ArticleDao {
         List<Article> articleList = new ArrayList<>();
 
         try {
-            String SQL = "SELECT * FROM board";
+            String SQL = "SELECT * FROM article";
             pstmt = conn.prepareStatement(SQL);
             rs = pstmt.executeQuery();
 
@@ -83,8 +84,8 @@ public class ArticleDao {
                 article.setUserId(rs.getInt("user_id"));
                 article.setTitle(rs.getString("title"));
                 article.setContent(rs.getString("content"));
-                article.setTravelStart(rs.getObject("travel_start", LocalDateTime.class));
-                article.setTravelEnd(rs.getObject("travel_end", LocalDateTime.class));
+                article.setTravelStart(rs.getObject("travel_start", LocalDate.class));
+                article.setTravelEnd(rs.getObject("travel_end", LocalDate.class));
                 article.setTravelRegion(rs.getString("travel_region"));
                 article.setTravelCity(rs.getString("travel_city"));
                 article.setNumberOfPartners(rs.getInt("number_of_partners"));

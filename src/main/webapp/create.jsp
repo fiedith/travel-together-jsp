@@ -151,7 +151,7 @@
         	<div class="text">여행인원</div>
         	<input type="number" placeholder="인원" class="input" name="number" required>
         	<div>
-        		<input type="text" placeholder="내용을 입력해주세요" class="input" name="title" required>
+        		<input type="text" placeholder="내용을 입력해주세요" class="input" name="content" required>
         	</div>
         	<button type="submit" class="buttons">게시글 작성</button>
         </form>

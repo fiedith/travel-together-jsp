@@ -24,10 +24,10 @@ public class UserLoginServlet extends HttpServlet {
             User user = userDao.getUser(userId);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-
+            
             // Redirect to home
             response.sendRedirect("hello.jsp");
-            
+
         } else {
             // Login failed, redirect back to the login form with an error message
             response.sendRedirect("login.jsp?error=1");
