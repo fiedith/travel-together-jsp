@@ -174,6 +174,7 @@
       width: 540px;
   }
 </style>
+
 <body>
   <div class="layout">
     <div class="headerLayout">
@@ -206,11 +207,11 @@
             <input type="text" placeholder="이메일" class="input" name="userId" required>
             <div class="text">비밀번호</div>
  
-            <input type="password" placeholder="비밀번호" class="input" name="password" required>
+			<input type="password" placeholder="비밀번호" class="input" name="password" id="password" required>
             <div class="text">비밀번호 확인</div>
-            <input type="password" placeholder="비밀번호 확인" class="input" name="confirmPassword" required>
-
-
+            <input type="password" placeholder="비밀번호 확인" class="input" name="confirmPassword" id="confirmPassword" required>
+            <span id="passwordMatchMessage"></span>
+           
             <div class="text">성별</div>
             <select class="select" name="gender" required>
                 <option value="" disabled selected>성별 선택</option>
@@ -232,6 +233,20 @@
       </div>
     </div>
   </div>
+  <script>
+    document.getElementById('confirmPassword').addEventListener('blur', function () {
+        var password = document.getElementById('password').value;
+        var confirmPassword = this.value;
+
+        var messageElement = document.getElementById('passwordMatchMessage');
+
+        if (password !== confirmPassword) {
+            messageElement.textContent = '비밀번호가 일치하지 않습니다.';
+        } else {
+            messageElement.textContent = '';
+        }
+    });
+  </script>
 </body>
 </html>
 
