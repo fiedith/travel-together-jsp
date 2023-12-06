@@ -238,14 +238,9 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
+.DS_STORE
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,intellij,macos
 
 # docker mysql
 /mysql-data
-
-# eclipse stuff, etc.
-.idea/
-.classpath
-.project
-/target
