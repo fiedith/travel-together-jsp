@@ -16,7 +16,7 @@
   body{
     margin: 0;
     padding: 0;
-  	padding-bottom: 100px;
+     padding-bottom: 100px;
   }
   .layout{
     width: 100%;
@@ -135,9 +135,9 @@
   }
 
   .text {
-	width: 100px;
-  	font-size: 16px;
-  	margin: 0.5rem;
+   width: 100px;
+     font-size: 16px;
+     margin: 0.5rem;
     margin-top: 1rem;
     font-weight: bold;
   }
@@ -171,32 +171,33 @@
   }
   .pic{
     height: 300px;
-   	width: 100%;
+      width: 100%;
     background-color: #3db9ff;
   }
   .contentlayout{
-   	width: 100%;
-   	height: 100%;
-   	display: flex;
-   	flex-direction: column;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   .list{
-  	width : 100%;
-  	margin: 4px;
-  	display: flex;
-  	flex-direction: row;
+     width : 100%;
+     margin: 4px;
+     display: flex;
+     flex-direction: row;
   }
   .inputtext{
-  	width: 100%;
-  	height:500px;
-  	vertical-align: top;
+     width: 100%;
+     height:500px;
+     vertical-align: top;
   }
   .inputday{
-  	width:20%;
-  	margin:0.5rem;
+     width:20%;
+     margin:0.5rem;
   }
+
 </style>
 <body>
   <div class="layout">
@@ -211,7 +212,7 @@
           </select>
           <input placeholder="검색어를 입력해주세요" class="H_search" value="">
           <button class="S_button">검색</button>
-        </div>	
+        </div>   
         <div class="headerLayout_R">
           <c:choose>
             <c:when test="${empty sessionScope.user}">
@@ -229,64 +230,64 @@
     </div>
   </div>
   <div class="contentlayout">
-  	<div class="pic">
+     <div class="pic">
     
-  	</div>
-  	 <div class="text">게시글 작성</div>
-  	
-  	<form class="postform" action="CreateArticleServlet" method="post">
-  	<div class="list" >
-  		<div class="text">제목</div>
-  		<input type="text" placeholder="제목" class="input" name="title" required>
+     </div>
+      <div class="text">게시글 작성</div>
+     
+     <form class="postform" action="CreateArticleServlet" method="post">
+     <div class="list" >
+        <div class="text">제목</div>
+        <input type="text" placeholder="제목" class="input" name="title" required>
 
-  		<div class="text">여행지 선택</div>
-  		<select class="select" name="travel_region" required>
-    		<option value="seoul">서울</option>
-    		<option value="busan">부산</option>
-    		<option value="jeju">제주</option>
-    		<option value="gyeonggi-do">경기도</option>
-    		<option value="daegu">대구</option>
-    		<option value="incheon">인천</option>
-    		<option value="daejeon">대전</option>
-    		<option value="ulsan">울산</option>
-    		<option value="sejong">세종시</option>
-    		<option value="chungcheong-bukdo">충청북도</option>
-    		<option value="chungcheong-namdo">충청남도</option>
-    		<option value="jeonra-bukdo">전라북도</option>
-    		<option value="jeonra-namdo">전라남도</option>
-    		<option value="gyeongsang-bukdo">경상북도</option>
-    		<option value="gyeongsang-namdo">경상남도</option>
-  		</select>
-  	</div>
-  	<div class="list" >
-  		<div class="text">여행기간</div>
-  		<input type="date" placeholder="출발일" class="inputday" name="travel_start" required>
-  		<input type="date" placeholder="종료일" class="inputday" name="travel_end" required>
+        <div class="text">여행지 선택</div>
+        <select class="select" name="travel_region" required>
+          <option value="seoul">서울</option>
+          <option value="busan">부산</option>
+          <option value="jeju">제주</option>
+          <option value="gyeonggi-do">경기도</option>
+          <option value="daegu">대구</option>
+          <option value="incheon">인천</option>
+          <option value="daejeon">대전</option>
+          <option value="ulsan">울산</option>
+          <option value="sejong">세종시</option>
+          <option value="chungcheong-bukdo">충청북도</option>
+          <option value="chungcheong-namdo">충청남도</option>
+          <option value="jeonra-bukdo">전라북도</option>
+          <option value="jeonra-namdo">전라남도</option>
+          <option value="gyeongsang-bukdo">경상북도</option>
+          <option value="gyeongsang-namdo">경상남도</option>
+        </select>
+     </div>
+     <div class="list" >
+        <div class="text">여행기간</div>
+        <input type="date" placeholder="출발일" class="inputday" name="travel_start" required>
+        <input type="date" placeholder="종료일" class="inputday" name="travel_end" required>
 
-  		<div class="text">여행인원</div>
-  		<input type="number" placeholder="인원" class="input" name="number" required>
-  	</div>
-  	    <div>
-    	<div class="text">이미지</div>
-    	<input type="radio" name="image_number" id="image1" value="1" class="image-option">
-    	<label for="image1">
-      		<img src="images/1.jpg" alt="이미지 1">
-    	</label>
+        <div class="text">여행인원</div>
+        <input type="number" placeholder="인원" class="input" name="number" required>
+     </div>
+         <div>
+       <div class="text">이미지</div>
+       <input type="radio" name="image_number" id="image1" value="1" class="image-option">
+       <label for="image1">
+            <img src="images/1.jpg" alt="이미지 1">
+       </label>
 
-    	<input type="radio" name="image_number" id="image2" value="2" class="image-option">
-    	<label for="image2">
-      		<img src="images/2.jpg" alt="이미지 2">
-    	</label>
+       <input type="radio" name="image_number" id="image2" value="2" class="image-option">
+       <label for="image2">
+            <img src="images/2.jpg" alt="이미지 2">
+       </label>
 
-    	<input type="radio" name="image_number" id="image3" value="3" class="image-option">
-    	<label for="image3">
-      	<img src="images/3.jpg" alt="이미지 3">
-    	</label>
+       <input type="radio" name="image_number" id="image3" value="3" class="image-option">
+       <label for="image3">
+         <img src="images/3.jpg" alt="이미지 3">
+       </label>
     </div>
     <input type="text" placeholder="내용을 입력해주세요" class="inputtext" name="content" required>
 
-  	<button type="submit" class="buttons">게시글 작성</button>
-	</form>
+     <button type="submit" class="buttons">게시글 작성</button>
+   </form>
   </div>
   </body>
 </html>

@@ -202,6 +202,22 @@
     display: flex;
     flex-direction: row;
   }
+  .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 <body>
     <div class="layout">
@@ -278,5 +294,8 @@
       </form>
     </div>
   </div>
+  <a href="create.jsp" class="circle">
+    글쓰기
+  </a>
 </body>
 </html>

@@ -207,8 +207,8 @@
             </div>
         </c:forEach>
     </div>
-    <div class="circle">
+    <a href="create.jsp" class="circle">
       글쓰기
-    </div>
+    </a>
 </body>
 </html>
