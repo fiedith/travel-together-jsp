@@ -1,4 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+   <%
+        request.getRequestDispatcher("/SwingAppServlet").include(request, response);
+    %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +14,22 @@
   body{
     margin: 0;
     padding: 0;
+  }
+    .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .layout{
     width: 100%;
@@ -94,7 +115,6 @@
     color: white;
     border-radius: 1rem;
     font-weight: bold;
-    font-family: 'NanumSquareNeo-Variable';
     margin-top: 4px;
     margin-bottom: 4px;
     cursor: pointer;
@@ -102,7 +122,11 @@
   }
   .pic{
     height: 400px;
-    background-color: #3db9ff;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size : cover;
+    background-image: url("images/main.png");
   }
   .mainText{
     margin-top: 1rem;
@@ -114,27 +138,10 @@
     border: none;
     font-weight: 500;
     font-size: 1.5rem;
-    font-family: 'SUITE-Regular';
   }
   .postList{
      display: grid;
      grid-template-rows : repeat(4,1fr)
-  }
-  .circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #3498db;
-    color: white;
-    text-align: center;
-    vertical-align: middle;
-    position: fixed;
-    bottom: 20px; 
-    right: 20px; 
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 </style>
 <body>
@@ -142,17 +149,25 @@
     <div class="headerLayout">
       <div class="headerLayout_L">
         <a href="hello.jsp" class="logo">Travel Together</a>
-        <form action="read" method="get" class="H_select">
+        <form action="ArticleSearchServlet" method="get" class="H_select">
           <select class="selects">
             <option value="title" >제목</option>
-            <option value="nickname" >닉네임</option>
           </select>
-          <input placeholder="검색어를 입력해주세요" class="H_search" value="">
+          <input placeholder="검색어를 입력해주세요" class="H_search" value="" name="searchTitle">
           <button type="submit" class="S_button">검색</button>
-        </form >   
+        </form>
         <div class="headerLayout_R">
-          <a href="login.jsp" class="button">로그인</a>
-          <a href="signup.jsp" class="button">회원가입</a>
+          <c:choose>
+            <c:when test="${empty sessionScope.user}">
+              <!-- User is not logged in -->
+              <a href="login.jsp" class="button">로그인</a>
+              <a href="signup.jsp" class="button">회원가입</a>
+            </c:when>
+            <c:otherwise>
+              <!-- User is logged in -->
+              <a href="LogoutServlet" class="button">로그아웃</a>
+            </c:otherwise>
+          </c:choose>
         </div>
       </div>
     </div>
@@ -162,14 +177,15 @@
   </div>
   <div>
     <div class="mainText">인기 여행지</div>
-<%--     <div class="postList">
+     <div class="postList">
        <c:forEach var="item" items="${dataArray}">
            <p>${item}</p>
        </c:forEach>
-    </div> --%>
+    </div> 
   </div>
-  <a href="create.jsp" class="circle">
+    <a href="create.jsp" class="circle">
     글쓰기
   </a>
+</body>
 </body>
 </html>
