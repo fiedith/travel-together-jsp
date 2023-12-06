@@ -42,6 +42,7 @@ public class ArticleDao {
         }
     }
 
+    // 게시물 생성
     public int createArticle(Article article, int loggedInUserId) {
         open();
         String SQL = "INSERT INTO article (user_id, title, content, travel_start, travel_end, travel_region, number_of_partners, image_number, created_at) " +
@@ -67,7 +68,7 @@ public class ArticleDao {
         return -1; // Database error
     }
 
-
+    // 모든 게시물 
     public List<Article> getAllArticles() {
         open();
         List<Article> articleList = new ArrayList<>();
@@ -99,6 +100,76 @@ public class ArticleDao {
         }
 
         return articleList;
+    }
+    
+    // id로 게시물 조회
+//    public Article getArticleById(String articleId) {
+//        open();
+//        String SQL = "SELECT * FROM article WHERE article_id = ?";
+//        try {
+//            pstmt = conn.prepareStatement(SQL);
+//            pstmt.setString(1, articleId);
+//            rs = pstmt.executeQuery();
+//
+//            if (rs.next()) {
+//                Article article = new Article();
+//                article.setArticleId(rs.getLong("article_id"));
+//                article.setUserId(rs.getInt("user_id"));
+//                article.setTitle(rs.getString("title"));
+//                article.setContent(rs.getString("content"));
+//                article.setTravelStart(rs.getObject("travel_start", LocalDate.class));
+//                article.setTravelEnd(rs.getObject("travel_end", LocalDate.class));
+//                article.setTravelRegion(rs.getString("travel_region"));
+//                article.setNumberOfPartners(rs.getInt("number_of_partners"));
+//                article.setImageNumber(rs.getInt("image_number"));
+//                article.setCreatedAt(rs.getObject("created_at", LocalDateTime.class));
+//
+//                return article;
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            close();
+//        }
+//
+//        return null; // Article not found or database error
+//    }
+
+    
+    public Article getArticleById(String articleId) {
+        open();
+        Article article = null;
+
+        try {
+            String SQL = "SELECT a.*, u.userName FROM article a " +
+                         "JOIN user u ON a.user_id = u.id " +
+                         "WHERE a.article_id = ?";
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, articleId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                article = new Article();
+                article.setArticleId(rs.getLong("article_id"));
+                article.setUserId(rs.getInt("user_id"));
+                article.setTitle(rs.getString("title"));
+                article.setContent(rs.getString("content"));
+                article.setTravelStart(rs.getObject("travel_start", LocalDate.class));
+                article.setTravelEnd(rs.getObject("travel_end", LocalDate.class));
+                article.setTravelRegion(rs.getString("travel_region"));
+                article.setNumberOfPartners(rs.getInt("number_of_partners"));
+                article.setImageNumber(rs.getInt("image_number"));
+                article.setCreatedAt(rs.getObject("created_at", LocalDateTime.class));
+                // Additional field for userName from User table
+                article.setUserName(rs.getString("userName"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+
+        return article;
     }
 
 }

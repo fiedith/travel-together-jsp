@@ -14,6 +14,7 @@ public class Article {
     private int numberOfPartners;
     private int imageNumber;
     private LocalDateTime createdAt;
+    private String userName;	// 작성자명
     
     private long articleId;
     public long getArticleId() {
@@ -83,5 +84,14 @@ public class Article {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+	// 작성자명 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 	
 }

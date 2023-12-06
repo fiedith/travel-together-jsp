@@ -180,57 +180,56 @@
 
 </style>
 <body>
-  <div class="layout">
-    <div class="headerLayout">
-      <div class="headerLayout_L">
-        <a href="hello.jsp" class="logo">HANGOUT</a>
-        <div class="H_select">
-          <select class="selects">
-            <option value="title" >제목</option>
-            <option value="content" >내용</option>
-            <option value="nickname" >닉네임</option>
-          </select>
-          <input placeholder="검색어를 입력해주세요" class="H_search" value="">
-          <button class="S_button">검색</button>
+    <div class="layout">
+        <div class="headerLayout">
+            <div class="headerLayout_L">
+                <a href="hello.jsp" class="logo">HANGOUT</a>
+                <div class="H_select">
+                    <select class="selects">
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
+                        <option value="nickname">닉네임</option>
+                    </select>
+                    <input placeholder="검색어를 입력해주세요" class="H_search" value="">
+                    <button class="S_button">검색</button>
+                </div>
+                <div class="headerLayout_R">
+                    <a href="login.jsp" class="button">로그인</a>
+                    <a href="signup.jsp" class="button">회원가입</a>
+                </div>
+            </div>
         </div>
-        <div class="headerLayout_R">
-          <a href="login.jsp" class="button">로그인</a>
-          <a href="signup.jsp" class="button">회원가입</a>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="postLayout">
-    <div class="post">
-      <div class="postContent">
-        
-        <div class="title">인천</div>
-        <div class="detail">
-          <div class="value">닉네임</div>
-          <div class="data">닉네임</div>
-      </div>
-        <div class="detail">
-          <div class="value">여행지역</div>
-          <div class="data">제주도 제주도</div>
+    <div class="postLayout">
+        <div class="post">
+            <div class="postContent">
+                <div class="title">${article.title}</div>
+                <div class="detail">
+                    <div class="value">닉네임</div>
+                    <div class="data">${article.userName}</div>
+                </div>
+                <div class="detail">
+                    <div class="value">여행지역</div>
+                    <div class="data">${article.travelRegion}</div>
+                </div>
+                <div class="detail">
+                    <div class="value">모집인원</div>
+                    <div class="data">${article.numberOfPartners}명</div>
+                </div>
+                <div class="detail">
+                    <div class="value">여행날짜</div>
+                    <div class="data">${article.travelStart} ~ ${article.travelEnd}</div>
+                </div>
+                <div class="content">
+                    <div class="contentData">
+                        <div>${article.content}</div>
+                    </div>
+                </div>
+                <div class="detail">
+                    <div class="data">${article.createdAt}</div>
+                </div>
+            </div>
         </div>
-        <div class="detail">
-          <div class="value">모집인원</div>
-          <div class="data">2명</div>
-        </div>
-        <div class="detail">
-          <div class="value">여행날짜</div>
-          <div class="data">2023-05-22 ~ 2023-05-23</div>
-        </div>
-        <div class="content">
-          <div class="contentData">
-            <div>제주도 여행 가실분?</div>
-          </div>
-        </div>
-        <div class="detail">
-          <div class="data">2023-12-05 04:27:53</div>
-        </div>
-      </div>
-    </div>
     <div class="">
       <div class="">
         <input class="" value="">
