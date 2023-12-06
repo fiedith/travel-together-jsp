@@ -9,6 +9,7 @@
   body{
     margin: 0;
     padding: 0;
+  	padding-bottom: 100px;
   }
   .layout{
     width: 100%;
@@ -116,6 +117,79 @@
     font-size: 1.5rem;
     font-family: 'SUITE-Regular';
   }
+  .postform {
+    width: 70%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .text {
+	width: 100px;
+  	font-size: 16px;
+  	margin: 0.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+
+  .input {
+    width: 40%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+  }
+
+  .select {
+    width: 40%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+  }
+
+  .buttons {
+    width: 10rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background-color: #4ab8f7;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .pic{
+    height: 300px;
+   	width: 100%;
+    background-color: #3db9ff;
+  }
+  .contentlayout{
+   	width: 100%;
+   	height: 100%;
+   	display: flex;
+   	flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .list{
+  	width : 100%;
+  	margin: 4px;
+  	display: flex;
+  	flex-direction: row;
+  }
+  .inputtext{
+  	width: 100%;
+  	height:500px;
+  	vertical-align: top;
+  }
+  .inputday{
+  	width:20%;
+  	margin:0.5rem;
+  }
 </style>
 <body>
   <div class="layout">
@@ -138,23 +212,65 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="contentlayout">
+  	<div class="pic">
+    
+  	</div>
+  	 <div class="text">게시글 작성</div>
+  	
+  	<form class="postform" action="CreateArticleServlet" method="post">
+  	<div class="list" >
+  		<div class="text">제목</div>
+  		<input type="text" placeholder="제목" class="input" name="title" required>
+
+  		<div class="text">여행지 선택</div>
+  		<select class="select" name="travel_region" required>
+    		<option value="seoul">서울</option>
+    		<option value="busan">부산</option>
+    		<option value="jeju">제주</option>
+    		<option value="gyeonggi-do">경기도</option>
+    		<option value="daegu">대구</option>
+    		<option value="incheon">인천</option>
+    		<option value="daejeon">대전</option>
+    		<option value="ulsan">울산</option>
+    		<option value="sejong">세종시</option>
+    		<option value="chungcheong-bukdo">충청북도</option>
+    		<option value="chungcheong-namdo">충청남도</option>
+    		<option value="jeonra-bukdo">전라북도</option>
+    		<option value="jeonra-namdo">전라남도</option>
+    		<option value="gyeongsang-bukdo">경상북도</option>
+    		<option value="gyeongsang-namdo">경상남도</option>
+  		</select>
+  	</div>
+  	<div class="list" >
+  		<div class="text">여행기간</div>
+  		<input type="date" placeholder="출발일" class="inputday" name="travel_start" required>
+  		<input type="date" placeholder="종료일" class="inputday" name="travel_end" required>
+
+  		<div class="text">여행인원</div>
+  		<input type="number" placeholder="인원" class="input" name="number" required>
+  	</div>
+  	    <div>
+    	<div class="text">이미지</div>
+    	<input type="radio" name="image_number" id="image1" class="image-option">
+    	<label for="image1">
+      		<img src="https://placekitten.com/100/100" alt="이미지 1">
+    	</label>
+
+    	<input type="radio" name="image_number" id="image2" class="image-option">
+    	<label for="image2">
+      		<img src="https://placekitten.com/101/101" alt="이미지 2">
+    	</label>
+
+    	<input type="radio" name="image_number" id="image3" class="image-option">
+    	<label for="image3">
+      	<img src="https://placekitten.com/102/102" alt="이미지 3">
+    	</label>
+    </div>
+    <input type="text" placeholder="내용을 입력해주세요" class="inputtext" name="content" required>
+
+  	<button type="submit" class="buttons">게시글 작성</button>
+	</form>
   </div>
-  <div>
-  	<div>게시글 작성</div>
-  		<form action="CreateArticleServlet" method="post">
-        	<div class="text">제목</div>
-        	<input type="text" placeholder="제목" class="input" name="title" required>
-        	<div class="text">여행기간</div>
-        	<input type="date" placeholder="출발일" class="input" name="travel_start" required>
-        	<input type="date" placeholder="종료일" class="input" name="travel_end" required>
-        	<div class="text">여행인원</div>
-        	<input type="number" placeholder="인원" class="input" name="number" required>
-        	<div>
-        		<input type="text" placeholder="내용을 입력해주세요" class="input" name="content" required>
-        	</div>
-        	<button type="submit" class="buttons">게시글 작성</button>
-        </form>
-  </div>
-</body>
+  </body>
 </html>

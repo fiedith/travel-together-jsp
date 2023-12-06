@@ -11,7 +11,6 @@ public class Article {
     private LocalDate travelStart;
     private LocalDate travelEnd;
     private String travelRegion;
-    private String travelCity;
     private int numberOfPartners;
     private int imageNumber;
     private LocalDateTime createdAt;
@@ -59,14 +58,6 @@ public class Article {
 	
 	public void setTravelRegion(String travelRegion) {
 		this.travelRegion = travelRegion;
-	}
-	
-	public String getTravelCity() {
-		return travelCity;
-	}
-	
-	public void setTravelCity(String travelCity) {
-		this.travelCity = travelCity;
 	}
 	
 	public int getNumberOfPartners() {

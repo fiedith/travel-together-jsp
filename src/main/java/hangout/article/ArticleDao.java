@@ -45,7 +45,7 @@ public class ArticleDao {
     public int createArticle(Article article, int loggedInUserId) {
         open();
         String SQL = "INSERT INTO article (user_id, title, content, travel_start, travel_end, travel_region, travel_city, number_of_partners, image_number, created_at) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())";
         try {
             pstmt = conn.prepareStatement(SQL);
             pstmt.setInt(1, loggedInUserId); // Use the logged-in user's ID
@@ -54,9 +54,8 @@ public class ArticleDao {
             pstmt.setObject(4, article.getTravelStart());
             pstmt.setObject(5, article.getTravelEnd());
             pstmt.setString(6, article.getTravelRegion());
-            pstmt.setString(7, article.getTravelCity());
-            pstmt.setInt(8, article.getNumberOfPartners());
-            pstmt.setInt(9, article.getImageNumber());
+            pstmt.setInt(7, article.getNumberOfPartners());
+            pstmt.setInt(8, article.getImageNumber());
 
             return pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -87,7 +86,6 @@ public class ArticleDao {
                 article.setTravelStart(rs.getObject("travel_start", LocalDate.class));
                 article.setTravelEnd(rs.getObject("travel_end", LocalDate.class));
                 article.setTravelRegion(rs.getString("travel_region"));
-                article.setTravelCity(rs.getString("travel_city"));
                 article.setNumberOfPartners(rs.getInt("number_of_partners"));
                 article.setImageNumber(rs.getInt("image_number"));
                 article.setCreatedAt(rs.getObject("created_at", LocalDateTime.class));
@@ -103,5 +101,4 @@ public class ArticleDao {
         return articleList;
     }
 
-    // Other methods...
 }

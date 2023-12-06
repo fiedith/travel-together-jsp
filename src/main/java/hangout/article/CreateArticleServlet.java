@@ -29,11 +29,8 @@ public class CreateArticleServlet extends HttpServlet {
             LocalDate travelStart = LocalDate.parse(request.getParameter("travel_start"));
             LocalDate travelEnd = LocalDate.parse(request.getParameter("travel_end"));
             String travelRegion = request.getParameter("travel_region");
-            String travelCity = request.getParameter("travel_city");
-            int numberOfPartners = Integer.parseInt(request.getParameter("number"));
-            
-            // @TODO: 사진 번호
-//            int imageNumber = Integer.parseInt(request.getParameter("image_number"));
+            int numberOfPartners = Integer.parseInt(request.getParameter("number")); 
+            int imageNumber = Integer.parseInt(request.getParameter("image_number"));
 
             // Create an Article object with the retrieved details
             Article newArticle = new Article();
@@ -43,11 +40,8 @@ public class CreateArticleServlet extends HttpServlet {
             newArticle.setTravelStart(travelStart);
             newArticle.setTravelEnd(travelEnd);
             newArticle.setTravelRegion(travelRegion);
-            newArticle.setTravelCity(travelCity);
             newArticle.setNumberOfPartners(numberOfPartners);
-            
-         // @TODO: 사진 번호
-//            newArticle.setImageNumber(imageNumber);
+            newArticle.setImageNumber(imageNumber);
 
             // Save the article to the database
             ArticleDao articleDao = new ArticleDao();
