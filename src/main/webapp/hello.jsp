@@ -129,14 +129,14 @@
     <div class="headerLayout">
       <div class="headerLayout_L">
         <a href="hello.jsp" class="logo">Travel Together</a>
-        <form action="read" method="get" class="H_select">
-          <select class="selects">
-            <option value="title" >제목</option>
-            <option value="nickname" >닉네임</option>
-          </select>
-          <input placeholder="검색어를 입력해주세요" class="H_search" value="">
-          <button type="submit" class="S_button">검색</button>
-        </form>
+        <form action="ArticleSearchServlet" method="get" class="H_select">
+  <select class="selects" name="searchType">
+    <option value="title" >제목</option>
+    <!-- Add more search options if needed -->
+  </select>
+  <input placeholder="검색어를 입력해주세요" class="H_search" name="searchTitle" value="">
+  <button type="submit" class="S_button">검색</button>
+</form>
         <div class="headerLayout_R">
           <c:choose>
             <c:when test="${empty sessionScope.user}">

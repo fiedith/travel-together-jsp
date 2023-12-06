@@ -9,6 +9,7 @@ import hangout.comment.Comment;
 public class Article {
 	
 	private int userId;
+	private long articleId;
     private String title;
     private String content;
     private LocalDate travelStart;
@@ -19,7 +20,9 @@ public class Article {
     private LocalDateTime createdAt;
     private String userName;	// 작성자명
     private List<Comment> comments;  // List of comments associated with the article
-
+    
+    
+    
     public List<Comment> getComments() {
         return comments;
     }
@@ -28,7 +31,6 @@ public class Article {
         this.comments = comments;
     }
     
-    private long articleId;
     public long getArticleId() {
 		return articleId;
 	}

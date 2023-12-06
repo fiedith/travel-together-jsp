@@ -102,39 +102,6 @@ public class ArticleDao {
         return articleList;
     }
     
-    // id로 게시물 조회
-//    public Article getArticleById(String articleId) {
-//        open();
-//        String SQL = "SELECT * FROM article WHERE article_id = ?";
-//        try {
-//            pstmt = conn.prepareStatement(SQL);
-//            pstmt.setString(1, articleId);
-//            rs = pstmt.executeQuery();
-//
-//            if (rs.next()) {
-//                Article article = new Article();
-//                article.setArticleId(rs.getLong("article_id"));
-//                article.setUserId(rs.getInt("user_id"));
-//                article.setTitle(rs.getString("title"));
-//                article.setContent(rs.getString("content"));
-//                article.setTravelStart(rs.getObject("travel_start", LocalDate.class));
-//                article.setTravelEnd(rs.getObject("travel_end", LocalDate.class));
-//                article.setTravelRegion(rs.getString("travel_region"));
-//                article.setNumberOfPartners(rs.getInt("number_of_partners"));
-//                article.setImageNumber(rs.getInt("image_number"));
-//                article.setCreatedAt(rs.getObject("created_at", LocalDateTime.class));
-//
-//                return article;
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            close();
-//        }
-//
-//        return null; // Article not found or database error
-//    }
-
     
     public Article getArticleById(String articleId) {
         open();
@@ -170,6 +137,38 @@ public class ArticleDao {
         }
 
         return article;
+    }
+    
+    // search by title
+    public List<Article> getArticlesByTitle(String title) {
+        List<Article> articles = new ArrayList<>();
+
+        try {
+            open();
+
+            String SQL = "SELECT article.*, user.userName FROM article " +
+                    "JOIN user ON article.user_id = user.id " +
+                    "WHERE article.title LIKE ?";
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, "%" + title + "%"); // Using LIKE to match partial titles
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Article article = new Article();
+                article.setArticleId(rs.getLong("article_id"));
+                article.setTitle(rs.getString("title"));
+                article.setContent(rs.getString("content"));
+                article.setUserName(rs.getString("userName"));
+
+                articles.add(article);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+
+        return articles;
     }
 
 }
