@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello JSP</title>
+  <title>로그인</title>
 </head>
 <style>
   body{
@@ -178,7 +178,7 @@
   <div class="layout">
     <div class="headerLayout">
       <div class="headerLayout_L">
-        <a href="hello.jsp" class="logo">HANGOUT</a>
+        <a href="hello.jsp" class="logo">Travel Together</a>
         <div class="H_select">
           <select class="selects">
             <option value="title" >제목</option>

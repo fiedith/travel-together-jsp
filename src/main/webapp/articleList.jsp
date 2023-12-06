@@ -4,14 +4,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Article List</title>
+    <title>게시글 검색</title>
 </head>
 <style>
     body {
         margin: 0;
         padding: 0;
     }
-
+      .layout{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
     .article-list {
         width: 80%;
         margin: 20px auto;
@@ -30,8 +35,9 @@
     }
 </style>
 <body>
+
     <div class="article-list">
-        <h2>Search Results</h2>
+        <h2>검색 결과</h2>
 
         <c:forEach var="article" items="${articleList}">
             <div class="article">

@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+   <%
+        request.getRequestDispatcher("/SwingAppServlet").include(request, response);
+    %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +99,6 @@
     color: white;
     border-radius: 1rem;
     font-weight: bold;
-    font-family: 'NanumSquareNeo-Variable';
     margin-top: 4px;
     margin-bottom: 4px;
     cursor: pointer;
@@ -103,7 +106,11 @@
   }
   .pic{
     height: 400px;
-    background-color: #3db9ff;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size : cover;
+    background-image: url("https://plus.unsplash.com/premium_photo-1700141570570-22c02f4b654f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   }
   .mainText{
     margin-top: 1rem;
@@ -115,28 +122,24 @@
     border: none;
     font-weight: 500;
     font-size: 1.5rem;
-    font-family: 'SUITE-Regular';
   }
   .postList{
-  	display: grid;
-  	grid-template-rows : repeat(4,1fr)
+     display: grid;
+     grid-template-rows : repeat(4,1fr)
   }
 </style>
 <body>
-  <p><%= request.getAttribute("message") %></p>
-
   <div class="layout">
     <div class="headerLayout">
       <div class="headerLayout_L">
         <a href="hello.jsp" class="logo">Travel Together</a>
         <form action="ArticleSearchServlet" method="get" class="H_select">
-  <select class="selects" name="searchType">
-    <option value="title" >제목</option>
-    <!-- Add more search options if needed -->
-  </select>
-  <input placeholder="검색어를 입력해주세요" class="H_search" name="searchTitle" value="">
-  <button type="submit" class="S_button">검색</button>
-</form>
+          <select class="selects">
+            <option value="title" >제목</option>
+          </select>
+          <input placeholder="검색어를 입력해주세요" class="H_search" value="" name="searchTitle">
+          <button type="submit" class="S_button">검색</button>
+        </form>
         <div class="headerLayout_R">
           <c:choose>
             <c:when test="${empty sessionScope.user}">
@@ -159,9 +162,9 @@
   <div>
     <div class="mainText">인기 여행지</div>
      <div class="postList">
-    	<c:forEach var="item" items="${dataArray}">
-        	<p>${item}</p>
-    	</c:forEach>
+       <c:forEach var="item" items="${dataArray}">
+           <p>${item}</p>
+       </c:forEach>
     </div> 
   </div>
 </body>

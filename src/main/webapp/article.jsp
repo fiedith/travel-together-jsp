@@ -5,12 +5,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello JSP</title>
+  <title>Travel Together</title>
 </head>
 <style>
   body{
     margin: 0;
     padding: 0;
+    background-color: #eaf0f8;
   }
   .layout{
     width: 100%;
@@ -117,9 +118,7 @@
     align-items: center;
     flex-direction:  column;
   }
-  .postContent{
-    display: block;
-  }
+
   .title{
     font-size: 1.7rem;
     height: 3rem;
@@ -178,13 +177,37 @@
     justify-content: center;
     display: flex;
   }
-    
+  .comments{
+    width: 45rem;
+    display: flex;
+    align-items: start;
+    flex-direction:  column;
+    margin: 0;
+  }
+  .commentData{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .commentdetail{
+    margin: 2px;
+  }
+  .inputselect{
+    width: 40rem;
+  }
+  .commentlayout{
+    width: 420px;
+  }
+  .createcomment{
+    display: flex;
+    flex-direction: row;
+  }
 </style>
 <body>
     <div class="layout">
         <div class="headerLayout">
             <div class="headerLayout_L">
-                <a href="hello.jsp" class="logo">HANGOUT</a>
+                <a href="hello.jsp" class="logo">Travel Together</a>
                 <div class="H_select">
                     <select class="selects">
                         <option value="title">제목</option>
@@ -227,44 +250,33 @@
                     </div>
                 </div>
                 <div class="detail">
-                    <div class="data">${article.createdAt}</div>
+                    <div class="data">${article.createdAt}
                 </div>
             </div>
         </div>
-        
-        <div class="postLayout">
-    <div class="post">
-        <div class="postContent">
-            <!-- Existing article details code -->
-
-<!-- display comments -->	
-<div class="comments">
-    <h2>댓글</h2>
-    <c:forEach var="comment" items="${comments}">
-        <div class="comment">
-            <p>${comment.userName}</p>
-            <p>${comment.content}</p>
-            <p>${comment.createdAt}</p>
-        </div>
-    </c:forEach>
-</div>
-</div>
-</div>
-</div>
-</div>
-        
-    <div class="">
-            <div class="">
-                <!-- Form for submitting comments -->
-<form action="CommentServlet" method="post">
-    <input type="hidden" name="articleId" value="${article.articleId}">
-    <input type="hidden" name="userId" value="${user.id}">
-    <textarea name="content" rows="4" cols="50" placeholder="댓글을 입력하세요"></textarea>
-    <button type="submit">게시</button>
-</form>
+    </div>  
+    <div class="comment">
+      <div class="comments">
+        <h2>댓글</h2>
+        <c:forEach var="comment" items="${comments}">
+            <div class="commentlayout">
+              <div class="commentData">
+                <p class="commentdetail">${comment.userName}</p>
+                <p class="commentdetail">${comment.createdAt}</p>
+              </div  class="commentdetail">
+                <p>${comment.content}</p>
             </div>
-            <div>
-           </div>
-        </div>
+        </c:forEach>
+      </div>
+    </div>
+    <div >
+      <form action="CommentServlet" class="createcomment" method="post">
+        <input type="hidden" name="articleId" value="${article.articleId}">
+        <input type="hidden" name="userId" value="${user.id}">
+        <textarea name="content" rows="4" class="inputselect" cols="50" placeholder="댓글을 입력하세요"></textarea>
+        <button type="submit" class="button">게시</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

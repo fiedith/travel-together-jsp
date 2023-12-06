@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello JSP</title>
+  <title>글 작성</title>
 </head>
 <style>
   body{
