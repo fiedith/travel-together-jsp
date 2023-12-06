@@ -2,6 +2,9 @@ package hangout.article;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import hangout.comment.Comment;
 
 public class Article {
 	
@@ -15,6 +18,15 @@ public class Article {
     private int imageNumber;
     private LocalDateTime createdAt;
     private String userName;	// 작성자명
+    private List<Comment> comments;  // List of comments associated with the article
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
     
     private long articleId;
     public long getArticleId() {

@@ -158,11 +158,11 @@
   </div>
   <div>
     <div class="mainText">인기 여행지</div>
-<%--     <div class="postList">
+     <div class="postList">
     	<c:forEach var="item" items="${dataArray}">
         	<p>${item}</p>
     	</c:forEach>
-    </div> --%>
+    </div> 
   </div>
 </body>
 </html>

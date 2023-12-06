@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,7 +178,7 @@
     justify-content: center;
     display: flex;
   }
-
+    
 </style>
 <body>
     <div class="layout">
@@ -230,15 +231,40 @@
                 </div>
             </div>
         </div>
-    <div class="">
-      <div class="">
-        <input class="" value="">
-        <button class="">게시</button>
-      </div>
-      <div>
+        
+        <div class="postLayout">
+    <div class="post">
+        <div class="postContent">
+            <!-- Existing article details code -->
 
-      </div>
-    </div>
-  </div>
+<!-- display comments -->	
+<div class="comments">
+    <h2>댓글</h2>
+    <c:forEach var="comment" items="${comments}">
+        <div class="comment">
+            <p>${comment.userName}</p>
+            <p>${comment.content}</p>
+            <p>${comment.createdAt}</p>
+        </div>
+    </c:forEach>
+</div>
+</div>
+</div>
+</div>
+</div>
+        
+    <div class="">
+            <div class="">
+                <!-- Form for submitting comments -->
+<form action="CommentServlet" method="post">
+    <input type="hidden" name="articleId" value="${article.articleId}">
+    <input type="hidden" name="userId" value="${user.id}">
+    <textarea name="content" rows="4" cols="50" placeholder="댓글을 입력하세요"></textarea>
+    <button type="submit">게시</button>
+</form>
+            </div>
+            <div>
+           </div>
+        </div>
 </body>
 </html>
